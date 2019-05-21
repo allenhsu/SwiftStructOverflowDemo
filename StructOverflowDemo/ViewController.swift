@@ -36,6 +36,7 @@ class CustomView: UIView {
         super.draw(rect)
         if let curve = curve {
             print("total points in dashpoints: \(curve.points.count)")
+            print("points: \(curve.points)")
         }
     }
 }
