@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomView: UIView {
+class ViewController: UIViewController {
     private struct Curve {
         var points = [CGPoint]()
     }
@@ -17,10 +17,16 @@ class CustomView: UIView {
 //    private class Curve {
 //        var points = [CGPoint]()
 //    }
-
-    private var curve: Curve?
     
-    func update() {
+    private var curve: Curve?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        step1()
+        step2()
+    }
+
+    func step1() {
         curve = Curve()
         curve?.points = [CGPoint(x: 0, y: 0), CGPoint(x: 1, y: 1)]
         
@@ -28,27 +34,13 @@ class CustomView: UIView {
 //        var curve = Curve()
 //        curve.points = [CGPoint(x: 0, y: 0), CGPoint(x: 1, y: 1)]
 //        self.curve = curve
-        
-        setNeedsDisplay()
     }
     
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
+    func step2() {
         if let curve = curve {
             print("total points in dashpoints: \(curve.points.count)")
             print("points: \(curve.points)")
         }
-    }
-}
-
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let view = CustomView()
-        view.frame = self.view.bounds
-        self.view.addSubview(view)
-        view.update()
     }
 }
 
